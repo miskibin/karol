@@ -10,6 +10,13 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import {
   ArrowRight,
   Star,
   Users,
@@ -20,12 +27,31 @@ import {
   Mail,
   MapPin,
 } from "lucide-react";
+import Image from "next/image";
 
 export default function Portfolio() {
+  const cleaningExamples = [
+    {
+      title: "Pranie kanapy",
+      description: "Usunięcie trudnych plam z kawy",
+      image: "/pranie/pranie1.jpg"
+    },
+    {
+      title: "Czyszczenie wykładziny",
+      description: "Przywrócenie świeżości w biurze",
+      image: "/pranie/pranie3-before.jpg"
+    },
+    {
+      title: "Czyszczenie wykładziny",
+      description: "Przywrócenie świeżości w biurze",
+      image: "/pranie/pranie3-after.jpg"
+    },
+
+  ];
+
   return (
     <main className="min-h-screen w-full bg-background">
-      {/* Hero Section */}
-      <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
+  <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
         <img
           src="/api/placeholder/1920/1080"
           alt="Hero background"
@@ -85,52 +111,140 @@ export default function Portfolio() {
           </div>
         </div>
       </section>
-
-      {/* Services Section */}
-      <section id="uslugi" className="py-24">
+      {/* Cleaning Services Section */}
+      <section id="czyszczenie" className="py-24 bg-muted/50">
         <div className="container mx-auto px-4">
           <div className="text-center space-y-4 mb-16">
             <Badge variant="outline" className="px-4 py-1">
-              Usługi
+              Pan od Plam
             </Badge>
-            <h2 className="text-3xl font-bold">Co oferuję</h2>
+            <h2 className="text-3xl font-bold">Profesjonalne Usługi Czyszczenia</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Specjalizuję się w kompleksowym czyszczeniu tapicerki meblowej, wykorzystując
+              najnowocześniejsze technologie i środki czyszczące przyjazne dla środowiska.
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Pan od Plam */}
-            <Card className="overflow-hidden">
-              <div className="aspect-video relative">
-                <img
-                  src="/api/placeholder/600/400"
-                  alt="Cleaning service"
-                  className="object-cover w-full h-full"
-                />
-              </div>
+          <div className="grid md:grid-cols-2 gap-8 mb-16">
+            <Card>
               <CardHeader>
-                <Star className="h-6 w-6 text-primary mb-2" />
-                <CardTitle>Pan od Plam</CardTitle>
-                <CardDescription>
-                  Profesjonalne pranie tapicerki
-                </CardDescription>
+                <CardTitle>Specjalizacja</CardTitle>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2">
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-primary" />
-                    Pranie kanap i foteli
+                <ul className="grid gap-4">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-5 w-5 text-primary mt-1" />
+                    <div>
+                      <h4 className="font-medium">Pranie Tapicerki Meblowej</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Kanapy, fotele, krzesła, narożniki - przywracamy świeżość każdemu meblowi
+                      </p>
+                    </div>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-primary" />
-                    Czyszczenie wykładzin
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-5 w-5 text-primary mt-1" />
+                    <div>
+                      <h4 className="font-medium">Czyszczenie Wykładzin</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Kompleksowe czyszczenie wykładzin w domach i biurach
+                      </p>
+                    </div>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-primary" />
-                    Pranie materacy
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-5 w-5 text-primary mt-1" />
+                    <div>
+                      <h4 className="font-medium">Odświeżanie Materacy</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Usuwanie roztoczy, bakterii i nieprzyjemnych zapachów
+                      </p>
+                    </div>
                   </li>
                 </ul>
               </CardContent>
             </Card>
 
+            <Card>
+              <CardHeader>
+                <CardTitle>Dlaczego ja?</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="grid gap-4">
+                  <li className="flex items-start gap-2">
+                    <Star className="h-5 w-5 text-primary mt-1" />
+                    <div>
+                      <h4 className="font-medium">Doświadczenie</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Wieloletnie doświadczenie w branży i setki zadowolonych klientów
+                      </p>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Sparkles className="h-5 w-5 text-primary mt-1" />
+                    <div>
+                      <h4 className="font-medium">Nowoczesny Sprzęt</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Wykorzystuję najnowocześniejsze urządzenia i środki czyszczące
+                      </p>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Users className="h-5 w-5 text-primary mt-1" />
+                    <div>
+                      <h4 className="font-medium">Indywidualne Podejście</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Każde zlecenie traktuję indywidualnie, dopasowując się do potrzeb klienta
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="space-y-8">
+            <h3 className="text-2xl font-semibold text-center">Przykładowe Realizacje</h3>
+            <Carousel className="w-full max-w-4xl mx-auto">
+              <CarouselContent>
+                {cleaningExamples.map((example, index) => (
+                  <CarouselItem key={index}>
+                    <Card className="border-0">
+                      <CardContent className="p-0">
+                        <div className="relative w-full h-0 pb-[56.25%]">
+                          <Image
+                          src={example.image}
+                          alt={example.title}
+                          layout="fill"
+                          objectFit="cover"
+                          className="rounded-lg"
+                          />
+                        </div>
+                        <div className="p-4 text-center">
+                          <h4 className="font-medium">{example.title}</h4>
+                          <p className="text-sm text-muted-foreground">{example.description}</p>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+          </div>
+        </div>
+      </section>
+
+      {/* Other Services Section */}
+      <section id="uslugi" className="py-24">
+        <div className="container mx-auto px-4">
+          <div className="text-center space-y-4 mb-16">
+            <Badge variant="outline" className="px-4 py-1">
+              Pozostałe Usługi
+            </Badge>
+            <h2 className="text-3xl font-bold">Inne Specjalizacje</h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
             {/* Sprzątanie Podłóg */}
             <Card className="overflow-hidden">
               <div className="aspect-video relative">
@@ -189,7 +303,6 @@ export default function Portfolio() {
           </div>
         </div>
       </section>
-
       {/* Pricing Section */}
       <section id="cennik" className="py-24 bg-muted/50">
         <div className="container mx-auto px-4">
