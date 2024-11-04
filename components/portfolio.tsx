@@ -1,188 +1,288 @@
-'use client'
+import React from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import {
+  ArrowRight,
+  Star,
+  Users,
+  Music,
+  Sparkles,
+  CheckCircle,
+  Phone,
+  Mail,
+  MapPin,
+} from "lucide-react";
 
-import { useState } from 'react'
-import { Menu, X, Phone, Mail, MapPin } from 'lucide-react'
-
-export function PortfolioComponent() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-
+export default function Portfolio() {
   return (
-    <div className="min-h-screen bg-gray-100">
-      {/* Header */}
-      <header className="bg-white shadow-md">
-        <div className="container mx-auto px-4 py-6 flex justify-between items-center">
-          <h1 className="text-2xl font-bold">Portfolio Karola</h1>
-          <nav className="hidden md:flex space-x-4">
-            <a href="#o-mnie" className="hover:text-blue-600">O mnie</a>
-            <a href="#pan-od-plam" className="hover:text-blue-600">Pan od Plam</a>
-            <a href="#sprzatanie" className="hover:text-blue-600">Sprzątanie</a>
-            <a href="#muzyka" className="hover:text-blue-600">Muzyka</a>
-            <a href="#kontakt" className="hover:text-blue-600">Kontakt</a>
-          </nav>
-          <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <X /> : <Menu />}
-          </button>
+    <main className="min-h-screen w-full bg-background">
+      {/* Hero Section */}
+      <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
+        <img
+          src="/api/placeholder/1920/1080"
+          alt="Hero background"
+          className="absolute inset-0 w-full h-full object-cover opacity-50"
+        />
+        <div className="relative container mx-auto px-4 flex flex-col items-center text-center space-y-6 z-10">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tighter">
+            Profesjonalne Usługi i{" "}
+            <span className="text-primary">Artystyczna Pasja</span>
+          </h1>
+          <p className="text-xl text-muted-foreground max-w-[600px]">
+            Łączę doskonałość w usługach czyszczenia z pasją do muzyki
+          </p>
+          <div className="flex gap-4">
+            <Button size="lg">
+              Zobacz Usługi
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+            <Button variant="outline" size="lg">
+              Skontaktuj się
+            </Button>
+          </div>
         </div>
-        {isMenuOpen && (
-          <nav className="md:hidden bg-white px-4 py-2 flex flex-col space-y-2">
-            <a href="#o-mnie" className="hover:text-blue-600">O mnie</a>
-            <a href="#pan-od-plam" className="hover:text-blue-600">Pan od Plam</a>
-            <a href="#sprzatanie" className="hover:text-blue-600">Sprzątanie</a>
-            <a href="#muzyka" className="hover:text-blue-600">Muzyka</a>
-            <a href="#kontakt" className="hover:text-blue-600">Kontakt</a>
-          </nav>
-        )}
-      </header>
+      </section>
 
-      {/* Main Content */}
-      <main className="container mx-auto px-4 py-8">
-        {/* O mnie */}
-        <section id="o-mnie" className="mb-12">
-          <h2 className="text-3xl font-bold mb-4">O mnie</h2>
-          <div className="bg-white shadow-md rounded-lg p-6">
-            <p className="mb-4">
-              Nazywam się Karol i z pasją podchodzę do każdej dziedziny mojego życia i pracy. Niezależnie od tego, czy zajmuję się praniem tapicerki, czy graniem na skrzypcach, zawsze stawiam na rozwój, najwyższą jakość usług i indywidualne podejście do klienta.
-            </p>
-            <p>
-              Moim priorytetem jest zawsze dobro i zadowolenie klienta. Staram się dawać więcej niż tylko usługę – chcę, aby każda współpraca była przyjemnym i wartościowym doświadczeniem. Cieszę się, gdy po spotkaniu ze mną ludzie czują radość i satysfakcję. Jeśli szukasz kogoś, kto angażuje się w swoją pracę z pełnym oddaniem, jesteś we właściwym miejscu.
-            </p>
-            {/* Placeholder for photo */}
-            <div className="mt-4 bg-gray-200 h-64 flex items-center justify-center">
-              <span className="text-gray-500">Miejsce na zdjęcie</span>
-            </div>
-          </div>
-        </section>
-
-        {/* Pan od Plam */}
-        <section id="pan-od-plam" className="mb-12">
-          <h2 className="text-3xl font-bold mb-4">Pan od Plam - Pranie tapicerki i wykładzin</h2>
-          <div className="bg-white shadow-md rounded-lg p-6">
-            <h3 className="text-2xl font-semibold mb-4">Oferowane usługi</h3>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <h4 className="text-xl font-semibold mb-2">Profesjonalne PRANIE MEBLI TAPICEROWANYCH</h4>
-                <ul className="list-disc list-inside">
-                  <li>Profesjonalne pranie kanap</li>
-                  <li>Profesjonalne pranie narożników</li>
-                  <li>Profesjonalne pranie foteli</li>
-                  <li>Profesjonalne pranie krzeseł</li>
-                  <li>Profesjonalne pranie materacy</li>
-                  <li>Profesjonalne pranie poduszek meblowych</li>
-                  <li>Suszenie</li>
-                  <li>Impregnacja</li>
-                </ul>
+      {/* About Section */}
+      <section id="o-mnie" className="py-24 bg-muted/50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center space-y-8">
+            <Badge variant="outline" className="px-4 py-1">
+              O mnie
+            </Badge>
+            <h2 className="text-3xl font-bold">Witaj w moim świecie</h2>
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div className="space-y-4">
+                <p className="text-lg text-muted-foreground">
+                  Nazywam się Karol i z pasją podchodzę do każdej dziedziny
+                  mojego życia i pracy. Niezależnie od tego, czy zajmuję się
+                  praniem tapicerki, czy graniem na skrzypcach, zawsze stawiam
+                  na rozwój, najwyższą jakość usług i indywidualne podejście do
+                  klienta.
+                </p>
+                <p className="text-lg text-muted-foreground">
+                  Moim priorytetem jest zawsze dobro i zadowolenie klienta.
+                  Staram się dawać więcej niż tylko usługę – chcę, aby każda
+                  współpraca była przyjemnym i wartościowym doświadczeniem.
+                </p>
               </div>
-              <div>
-                <h4 className="text-xl font-semibold mb-2">Pranie Wykładzin</h4>
-                <ul className="list-disc list-inside">
-                  <li>Profesjonalne Pranie wykładzin</li>
-                  <li>Pranie wykładzin metodą ekstrakcji</li>
-                  <li>Pranie wykładzin metodą enkapsulacji (minimalna ilość wody)</li>
-                  <li>Suszenie wykładziny</li>
-                  <li>Impregnacja</li>
-                </ul>
-              </div>
-            </div>
-            <h4 className="text-xl font-semibold mt-6 mb-2">Oferta dla firm</h4>
-            <ul className="list-disc list-inside">
-              <li>Pranie krzeseł konferencyjnych</li>
-              <li>Pranie foteli biurowych</li>
-              <li>Pranie kanap biurowych</li>
-              <li>Pranie wykładzin biurowych</li>
-              <li>Suszenie</li>
-              <li>Impregnacja</li>
-              <li>(możliwe wykonywanie usługi w godzinach nocnych)</li>
-            </ul>
-            <h3 className="text-2xl font-semibold mt-8 mb-4">Cennik</h3>
-            <ul className="list-disc list-inside">
-              <li>Pranie kanapy/wersalki od 150zł</li>
-              <li>Pranie narożnika od 200zł</li>
-              <li>Pranie fotela od 40zł</li>
-              <li>Pranie Krzesła od 20zł</li>
-              <li>Pranie poduszki od 15zł</li>
-              <li>Pranie materaca od 80zł</li>
-              <li>Pranie wykładzin domowych od 18zł za m2</li>
-            </ul>
-            <p className="mt-4">
-              Na cenę usługi wpływa: wielkość mebla, stopień zabrudzenia, kształt mebla, czas pracy.
-              Usługi dla firm są wyceniane indywidualnie.
-            </p>
-            {/* Placeholder for photos */}
-            <div className="mt-6 grid grid-cols-2 gap-4">
-              <div className="bg-gray-200 h-48 flex items-center justify-center">
-                <span className="text-gray-500">Zdjęcie 1</span>
-              </div>
-              <div className="bg-gray-200 h-48 flex items-center justify-center">
-                <span className="text-gray-500">Zdjęcie 2</span>
+              <div className="relative aspect-square">
+                <img
+                  src="/api/placeholder/600/600"
+                  alt="Profile"
+                  className="rounded-lg object-cover w-full h-full"
+                />
               </div>
             </div>
           </div>
-        </section>
-
-        {/* Sprzątanie */}
-        <section id="sprzatanie" className="mb-12">
-          <h2 className="text-3xl font-bold mb-4">Czysta podłoga bez wysiłku</h2>
-          <div className="bg-white shadow-md rounded-lg p-6">
-            <h3 className="text-2xl font-semibold mb-4">Bezprzewodowe urządzenie do sprzątania</h3>
-            <p className="mb-4">
-              Oferuję sprzęt, który myje, odkurza i suszy w jednym kroku. Nie musisz już zamiatać przed myciem – urządzenie dokładnie usuwa zarówno suche, jak i mokre zanieczyszczenia.
-            </p>
-            <p className="mb-4">
-              Dzięki dwóm zbiornikom na czystą i brudną wodę, wałek jest cały czas płukany, więc zawsze sprzątasz czystym wałkiem, a podłoga lśni. Na dodatek, urządzenie po myciu automatycznie suszy podłogę.
-            </p>
-            <p className="font-semibold">
-              Jeśli Cię to interesuje, zadzwoń. Chętnie opowiem więcej!
-            </p>
-            <p className="mt-4">
-              Tel: 661094441
-            </p>
-            {/* Placeholder for product photo */}
-            <div className="mt-6 bg-gray-200 h-64 flex items-center justify-center">
-              <span className="text-gray-500">Zdjęcie urządzenia</span>
-            </div>
-          </div>
-        </section>
-
-        {/* Muzyka */}
-        <section id="muzyka" className="mb-12">
-          <h2 className="text-3xl font-bold mb-4">Usługi muzyczne</h2>
-          <div className="bg-white shadow-md rounded-lg p-6">
-            <p className="text-gray-500 italic">
-              Ta sekcja jest w trakcie tworzenia. Wkrótce pojawią się tutaj informacje o moich usługach muzycznych.
-            </p>
-            {/* Placeholder for music-related content */}
-            <div className="mt-6 bg-gray-200 h-64 flex items-center justify-center">
-              <span className="text-gray-500">Miejsce na treści związane z muzyką</span>
-            </div>
-          </div>
-        </section>
-
-        {/* Kontakt */}
-        <section id="kontakt" className="mb-12">
-          <h2 className="text-3xl font-bold mb-4">Kontakt</h2>
-          <div className="bg-white shadow-md rounded-lg p-6">
-            <div className="flex items-center mb-4">
-              <Phone className="mr-2" />
-              <span>661 094 441</span>
-            </div>
-            <div className="flex items-center mb-4">
-              <Mail className="mr-2" />
-              <span>twoj.email@example.com</span>
-            </div>
-            <div className="flex items-center">
-              <MapPin className="mr-2" />
-              <span>Twoja lokalizacja</span>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      {/* Footer */}
-      <footer className="bg-gray-800 text-white py-4">
-        <div className="container mx-auto px-4 text-center">
-          <p>&copy; 2023 Portfolio Karola. Wszelkie prawa zastrzeżone.</p>
         </div>
-      </footer>
-    </div>
-  )
+      </section>
+
+      {/* Services Section */}
+      <section id="uslugi" className="py-24">
+        <div className="container mx-auto px-4">
+          <div className="text-center space-y-4 mb-16">
+            <Badge variant="outline" className="px-4 py-1">
+              Usługi
+            </Badge>
+            <h2 className="text-3xl font-bold">Co oferuję</h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Pan od Plam */}
+            <Card className="overflow-hidden">
+              <div className="aspect-video relative">
+                <img
+                  src="/api/placeholder/600/400"
+                  alt="Cleaning service"
+                  className="object-cover w-full h-full"
+                />
+              </div>
+              <CardHeader>
+                <Star className="h-6 w-6 text-primary mb-2" />
+                <CardTitle>Pan od Plam</CardTitle>
+                <CardDescription>
+                  Profesjonalne pranie tapicerki
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary" />
+                    Pranie kanap i foteli
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary" />
+                    Czyszczenie wykładzin
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary" />
+                    Pranie materacy
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            {/* Sprzątanie Podłóg */}
+            <Card className="overflow-hidden">
+              <div className="aspect-video relative">
+                <img
+                  src="/api/placeholder/600/400"
+                  alt="Floor cleaning"
+                  className="object-cover w-full h-full"
+                />
+              </div>
+              <CardHeader>
+                <Sparkles className="h-6 w-6 text-primary mb-2" />
+                <CardTitle>Sprzątanie Podłóg</CardTitle>
+                <CardDescription>
+                  Nowoczesne rozwiązania czyszczące
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary" />
+                    Bezprzewodowe urządzenie
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary" />
+                    Mycie i odkurzanie w jednym
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary" />
+                    Oszczędność czasu
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            {/* Muzyka */}
+            <Card className="overflow-hidden">
+              <div className="aspect-video relative">
+                <img
+                  src="/api/placeholder/600/400"
+                  alt="Music"
+                  className="object-cover w-full h-full"
+                />
+              </div>
+              <CardHeader>
+                <Music className="h-6 w-6 text-primary mb-2" />
+                <CardTitle>Muzyka</CardTitle>
+                <CardDescription>Usługi muzyczne</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Sekcja w przygotowaniu. Wkrótce pojawią się informacje o
+                  usługach muzycznych.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section id="cennik" className="py-24 bg-muted/50">
+        <div className="container mx-auto px-4">
+          <div className="text-center space-y-4 mb-16">
+            <Badge variant="outline" className="px-4 py-1">
+              Cennik
+            </Badge>
+            <h2 className="text-3xl font-bold">Przejrzyste ceny</h2>
+          </div>
+
+          <div className="max-w-2xl mx-auto">
+            <Card>
+              <CardContent className="p-6">
+                <div className="grid gap-4">
+                  {[
+                    { service: "Pranie kanapy/wersalki", price: "od 150 zł" },
+                    { service: "Pranie narożnika", price: "od 200 zł" },
+                    { service: "Pranie fotela", price: "od 40 zł" },
+                    { service: "Pranie krzesła", price: "od 20 zł" },
+                    { service: "Pranie materaca", price: "od 80 zł" },
+                    { service: "Pranie wykładzin", price: "od 18 zł/m²" },
+                  ].map((item, index) => (
+                    <div
+                      key={index}
+                      className="flex justify-between items-center"
+                    >
+                      <span>{item.service}</span>
+                      <span className="font-semibold">{item.price}</span>
+                    </div>
+                  ))}
+                </div>
+                <Separator className="my-6" />
+                <p className="text-sm text-muted-foreground">
+                  * Cena końcowa zależy od: wielkości mebla, stopnia
+                  zabrudzenia, kształtu mebla i czasu pracy. Usługi dla firm
+                  wyceniane są indywidualnie.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="kontakt" className="py-24">
+        <div className="container mx-auto px-4">
+          <div className="text-center space-y-4 mb-16">
+            <Badge variant="outline" className="px-4 py-1">
+              Kontakt
+            </Badge>
+            <h2 className="text-3xl font-bold">Skontaktuj się ze mną</h2>
+            <p className="text-lg text-muted-foreground">
+              Chętnie odpowiem na wszystkie pytania
+            </p>
+          </div>
+
+          <div className="max-w-xl mx-auto">
+            <Card>
+              <CardContent className="p-6">
+                <div className="space-y-6">
+                  <div className="flex items-center gap-4">
+                    <Phone className="h-5 w-5 text-primary" />
+                    <div>
+                      <p className="font-medium">Telefon</p>
+                      <p className="text-muted-foreground">661 094 441</p>
+                    </div>
+                  </div>
+                  <Separator />
+                  <div className="flex items-center gap-4">
+                    <Mail className="h-5 w-5 text-primary" />
+                    <div>
+                      <p className="font-medium">Email</p>
+                      <p className="text-muted-foreground">
+                        kontakt@example.com
+                      </p>
+                    </div>
+                  </div>
+                  <Separator />
+                  <div className="flex items-center gap-4">
+                    <MapPin className="h-5 w-5 text-primary" />
+                    <div>
+                      <p className="font-medium">Lokalizacja</p>
+                      <p className="text-muted-foreground">
+                        Warszawa i okolice
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
 }
